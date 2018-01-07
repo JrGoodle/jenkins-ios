@@ -256,6 +256,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		304DE20E2002987E00467ABA /* RevealServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RevealServer.framework; path = Frameworks/RevealServer.framework; sourceTree = "<group>"; };
 		BC91B069E34CF6D98BFBAECF /* RefreshingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshingTableViewController.swift; sourceTree = "<group>"; };
 		BC91B46ECC50D5E6CDBF2A0C /* LoggingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingManager.swift; sourceTree = "<group>"; };
 		BC91B4D46AFC477931816CB9 /* LoggableContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggableContentView.swift; sourceTree = "<group>"; };
@@ -582,6 +583,7 @@
 		DCC2E15E1D9D7CDA00491B98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				304DE20E2002987E00467ABA /* RevealServer.framework */,
 				E13515911F20F6FB002847BF /* Fabric.framework */,
 				E135158F1F20F6F8002847BF /* Crashlytics.framework */,
 				E108571A1F20F51D005363D2 /* SAMKeychain.framework */,
@@ -890,6 +892,7 @@
 				DC99C3CF1D955C8F0031DBE4 /* Resources */,
 				DC3CCD141DA67FCA004C4C3D /* ShellScript */,
 				DC2045C51DB12892009CF232 /* Embed App Extensions */,
+				304DE20F2002992A00467ABA /* Integrate Reveal Server */,
 			);
 			buildRules = (
 			);
@@ -1042,6 +1045,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		304DE20F2002992A00467ABA /* Integrate Reveal Server */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Integrate Reveal Server";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export REVEAL_SERVER_FILENAME=\"RevealServer.framework\"\n\n# Update this path to point to the location of RevealServer.framework in your project.\nexport REVEAL_SERVER_PATH=\"${SRCROOT}/Frameworks/${REVEAL_SERVER_FILENAME}\"\n\n# If configuration is not Debug, skip this script.\n[ \"${CONFIGURATION}\" != \"Debug\" ] && exit 0\n\n# If RevealServer.framework exists at the specified path, run code signing script.\nif [ -d \"${REVEAL_SERVER_PATH}\" ]; then\n\"${REVEAL_SERVER_PATH}/Scripts/copy_and_codesign_revealserver.sh\"\nelse\necho \"Reveal Server not loaded: RevealServer.framework could not be found.\"\nfi";
+		};
 		DC3CCD141DA67FCA004C4C3D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1481,10 +1498,16 @@
 					"$(PROJECT_DIR)/JenkinsiOS",
 					"$(PROJECT_DIR)/JenkinsiOS/Other/Frameworks/**",
 					"$(PROJECT_DIR)/JenkinsiOS/Other/Frameworks",
+					"$(SRCROOT)/Frameworks",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/JenkinsiOS/Other/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-weak_framework",
+					RevealServer,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobilabsolutions.jenkins.client;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "73ba05b1-fbbe-4d0c-96f1-3a601909e7a1";

@@ -236,7 +236,8 @@ extension UIImageView{
 
 extension UILabel{
     func updateFontName(to name: String){
-        let fontName =  self.font.isBold ? (name + "-Bold") : name + "-Regular"
+        guard let isBold = self.font?.isBold else { return }
+        let fontName = isBold ? (name + "-Bold") : name + "-Regular"
         self.font = UIFont(name: fontName, size: self.font.pointSize)
     }
 }

@@ -116,6 +116,8 @@ class JobsTableViewController: RefreshingTableViewController{
         
         let searchResultsController = SearchResultsTableViewController(searchData: searchData)
         searchResultsController.delegate = self
+        searchResultsController.automaticallyAdjustsScrollViewInsets = false
+        searchResultsController.edgesForExtendedLayout = []
         searchController = UISearchController(searchResultsController: searchResultsController)
         searchController?.searchResultsUpdater = searchResultsController.searcher
         tableView.tableHeaderView = searchController?.searchBar

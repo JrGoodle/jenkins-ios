@@ -16,6 +16,9 @@ extension Job: DescribingColor{
             case .blue: fallthrough
             case .blueAnimated:
                 return UIColor(red: 22/255, green: 91/255, blue: 244/255, alpha: 1.0)
+            case .green: fallthrough
+            case .greenAnimated:
+                return UIColor(red: 154/255, green: 213/255, blue: 2/255, alpha: 1.0)
             case .red: fallthrough
             case .redAnimated:
                 return UIColor(red: 238/255, green: 0, blue: 0, alpha: 1.0)

@@ -11,6 +11,7 @@ import Foundation
 /// The color of a given Job, indicating its status
 enum JenkinsColor: String{
     case blue = "blue"
+    case green = "green"
     case red = "red"
     case yellow = "yellow"
     case disabled = "disabled"
@@ -20,6 +21,7 @@ enum JenkinsColor: String{
     case yellowAnimated = "yellow_anime"
     case redAnimated = "red_anime"
     case blueAnimated = "blue_anime"
+    case greenAnimated = "green_anime"
     case abortedAnimated = "aborted_anime"
     case disabledAnimated = "disabled_anime"
     case notBuiltAnimated = "notbuilt_anime"

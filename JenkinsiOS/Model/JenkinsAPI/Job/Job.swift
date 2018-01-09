@@ -78,7 +78,12 @@ class Job: Favoratible{
             else { return nil }
 
         if let stringColor = json["color"] as? String{
-            self.color = JenkinsColor(rawValue: stringColor)
+            if let color = JenkinsColor(rawValue: stringColor), color == .blue {
+                // TODO: Add user preference check
+                self.color = JenkinsColor.green
+            } else {
+                self.color = JenkinsColor(rawValue: stringColor)
+            }
         }
         else{
             self.color = JenkinsColor.folder
@@ -99,7 +104,12 @@ class Job: Favoratible{
     func addAdditionalFields(from json: [String: AnyObject]){
 
         if let stringColor = json["color"] as? String{
-            self.color = JenkinsColor(rawValue: stringColor)
+            if let color = JenkinsColor(rawValue: stringColor), color == .blue {
+                // TODO: Add user preference check
+                self.color = JenkinsColor.green
+            } else {
+                self.color = JenkinsColor(rawValue: stringColor)
+            }
         }
 
         description = json["description"] as? String

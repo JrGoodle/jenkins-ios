@@ -246,3 +246,16 @@ extension UIFont{
         return fontDescriptor.symbolicTraits.contains(.traitBold)
     }
 }
+
+private let greenBallsModeKey = "greenBallsMode"
+
+extension UserDefaults{
+    var isGreenBallModeEnabled: Bool{
+        get {
+            return UserDefaults.standard.bool(forKey: greenBallsModeKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey:greenBallsModeKey)
+        }
+    }
+}

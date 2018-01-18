@@ -79,8 +79,7 @@ class Job: Favoratible{
 
         if let stringColor = json["color"] as? String{
             if let color = JenkinsColor(rawValue: stringColor), color == .blue {
-                // TODO: Add user preference check
-                self.color = JenkinsColor.green
+                self.color = UserDefaults.standard.isGreenBallModeEnabled ? .green : .blue
             } else {
                 self.color = JenkinsColor(rawValue: stringColor)
             }
@@ -105,8 +104,7 @@ class Job: Favoratible{
 
         if let stringColor = json["color"] as? String{
             if let color = JenkinsColor(rawValue: stringColor), color == .blue {
-                // TODO: Add user preference check
-                self.color = JenkinsColor.green
+                self.color = UserDefaults.standard.isGreenBallModeEnabled ? .green : .blue
             } else {
                 self.color = JenkinsColor(rawValue: stringColor)
             }

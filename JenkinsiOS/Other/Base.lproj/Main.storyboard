@@ -1179,6 +1179,9 @@
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X4h-95-pCV">
                                                         <rect key="frame" x="284" y="6.5" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="toggleGreenBallsMode:" destination="GG9-cU-Ev7" eventType="valueChanged" id="43q-8L-3tg"/>
+                                                        </connections>
                                                     </switch>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1290,6 +1293,7 @@
                         <outlet property="aboutViewHeight" destination="jPh-Gc-se0" id="YP9-gn-Qxp"/>
                         <outlet property="creditsTextView" destination="059-cO-KZE" id="UyD-Q6-1dx"/>
                         <outlet property="creditsViewHeight" destination="FPD-UI-lOF" id="53E-KU-8U9"/>
+                        <outlet property="greenBallsSwitch" destination="X4h-95-pCV" id="UWi-Dj-CPe"/>
                         <outlet property="scrollView" destination="g9y-lz-lhJ" id="tQn-Wk-bPa"/>
                         <outlet property="stackView" destination="tNh-JW-2tN" id="Nai-Fg-KLf"/>
                     </connections>
